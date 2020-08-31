@@ -97,6 +97,7 @@ void SpindleLaser::apply_power(const uint8_t opwr) {
       ocr_off();
       isReady = false;
     }
+    power_delay(enabled());
   #else
     WRITE(SPINDLE_LASER_ENA_PIN, enabled() ? SPINDLE_LASER_ACTIVE_STATE : !SPINDLE_LASER_ACTIVE_STATE);
     isReady = true;
