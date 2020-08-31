@@ -305,22 +305,22 @@ void GcodeSuite::G28() {
                home_all = homeX == homeY && homeX == homeZ, // All or None
                doX = home_all || homeX, doY = home_all || homeY, doZ = home_all || homeZ;
 
-    #if Z_HOME_DIR > 0  // If homing away from BED do Z first
+    // #if Z_HOME_DIR > 0  // If homing away from BED do Z first
 
-      if (doZ) homeaxis(Z_AXIS);
+    //   if (doZ) homeaxis(Z_AXIS);
 
-    #endif
+    // #endif
 
-    const float z_homing_height =
-      ENABLED(UNKNOWN_Z_NO_RAISE) && !TEST(axis_known_position, Z_AXIS)
-        ? 0
-        : (parser.seenval('R') ? parser.value_linear_units() : Z_HOMING_HEIGHT);
+    // const float z_homing_height =
+    //   ENABLED(UNKNOWN_Z_NO_RAISE) && !TEST(axis_known_position, Z_AXIS)
+    //     ? 0
+    //     : (parser.seenval('R') ? parser.value_linear_units() : Z_HOMING_HEIGHT);
 
-    if (z_homing_height && (doX || doY || (ENABLED(Z_SAFE_HOMING) && doZ))) {
-      // Raise Z before homing any other axes and z is not already high enough (never lower z)
-      if (DEBUGGING(LEVELING)) DEBUG_ECHOLNPAIR("Raise Z (before homing) by ", z_homing_height);
-      do_z_clearance(z_homing_height, true, DISABLED(UNKNOWN_Z_NO_RAISE));
-    }
+    // if (z_homing_height && (doX || doY || (ENABLED(Z_SAFE_HOMING) && doZ))) {
+    //   // Raise Z before homing any other axes and z is not already high enough (never lower z)
+    //   if (DEBUGGING(LEVELING)) DEBUG_ECHOLNPAIR("Raise Z (before homing) by ", z_homing_height);
+    //   do_z_clearance(z_homing_height, true, DISABLED(UNKNOWN_Z_NO_RAISE));
+    // }
 
     #if ENABLED(QUICK_HOME)
 
@@ -367,18 +367,18 @@ void GcodeSuite::G28() {
     TERN_(IMPROVE_HOMING_RELIABILITY, end_slow_homing(slow_homing));
 
     // Home Z last if homing towards the bed
-    #if Z_HOME_DIR < 0
+    // #if Z_HOME_DIR < 0
 
-      if (doZ) {
-        TERN_(BLTOUCH, bltouch.init());
+    //   if (doZ) {
+    //     TERN_(BLTOUCH, bltouch.init());
 
-        TERN(Z_SAFE_HOMING, home_z_safely(), homeaxis(Z_AXIS));
+    //     TERN(Z_SAFE_HOMING, home_z_safely(), homeaxis(Z_AXIS));
 
-        probe.move_z_after_homing();
+    //     probe.move_z_after_homing();
 
-      } // doZ
+    //   } // doZ
 
-    #endif // Z_HOME_DIR < 0
+    // #endif // Z_HOME_DIR < 0
 
     sync_plan_position();
 

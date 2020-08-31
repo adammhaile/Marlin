@@ -57,3 +57,10 @@
   #define Z_HARDWARE_SERIAL  Serial4
   #define E0_HARDWARE_SERIAL Serial4
 #endif
+
+#define SPINDLE_LASER_ENA_PIN             PC14 //bl-touch z-limit - unused, just needs to be defined
+#define SPINDLE_LASER_PWM_PIN             PA1  //bl-touch probe in/out
+
+// these are unused but have to be defined so that M9 is available
+#define COOLANT_MIST_PIN                  PC8
+#define COOLANT_FLOOD_PIN                 PC9
