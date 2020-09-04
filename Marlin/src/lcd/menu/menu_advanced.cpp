@@ -363,15 +363,15 @@ void menu_backlash();
     #define EDIT_VMAX(N) EDIT_ITEM_FAST(float3, MSG_VMAX_##N, &planner.settings.max_feedrate_mm_s[_AXIS(N)], 1, max_fr_edit_scaled[_AXIS(N)])
     EDIT_VMAX(A);
     EDIT_VMAX(B);
-    EDIT_VMAX(C);
+    // EDIT_VMAX(C);
 
-    #if E_STEPPERS
-      EDIT_ITEM_FAST(float3, MSG_VMAX_E, &planner.settings.max_feedrate_mm_s[E_AXIS_N(active_extruder)], 1, max_fr_edit_scaled.e);
-    #endif
-    #if ENABLED(DISTINCT_E_FACTORS)
-      LOOP_L_N(n, E_STEPPERS)
-        EDIT_ITEM_FAST_N(float3, n, MSG_VMAX_EN, &planner.settings.max_feedrate_mm_s[E_AXIS_N(n)], 1, max_fr_edit_scaled.e);
-    #endif
+    // #if E_STEPPERS
+    //   EDIT_ITEM_FAST(float3, MSG_VMAX_E, &planner.settings.max_feedrate_mm_s[E_AXIS_N(active_extruder)], 1, max_fr_edit_scaled.e);
+    // #endif
+    // #if ENABLED(DISTINCT_E_FACTORS)
+    //   LOOP_L_N(n, E_STEPPERS)
+    //     EDIT_ITEM_FAST_N(float3, n, MSG_VMAX_EN, &planner.settings.max_feedrate_mm_s[E_AXIS_N(n)], 1, max_fr_edit_scaled.e);
+    // #endif
 
     // M205 S Min Feedrate
     EDIT_ITEM_FAST(float3, MSG_VMIN, &planner.settings.min_feedrate_mm_s, 0, 999);
@@ -409,7 +409,7 @@ void menu_backlash();
     EDIT_ITEM_FAST(float5_25, MSG_ACC, &planner.settings.acceleration, 25, max_accel);
 
     // M204 R Retract Acceleration
-    EDIT_ITEM_FAST(float5, MSG_A_RETRACT, &planner.settings.retract_acceleration, 100, planner.settings.max_acceleration_mm_per_s2[E_AXIS_N(active_extruder)]);
+    // EDIT_ITEM_FAST(float5, MSG_A_RETRACT, &planner.settings.retract_acceleration, 100, planner.settings.max_acceleration_mm_per_s2[E_AXIS_N(active_extruder)]);
 
     // M204 T Travel Acceleration
     EDIT_ITEM_FAST(float5_25, MSG_A_TRAVEL, &planner.settings.travel_acceleration, 25, max_accel);
@@ -417,15 +417,15 @@ void menu_backlash();
     #define EDIT_AMAX(Q,L) EDIT_ITEM_FAST(long5_25, MSG_AMAX_##Q, &planner.settings.max_acceleration_mm_per_s2[_AXIS(Q)], L, max_accel_edit_scaled[_AXIS(Q)], []{ planner.reset_acceleration_rates(); })
     EDIT_AMAX(A, 100);
     EDIT_AMAX(B, 100);
-    EDIT_AMAX(C,  10);
+    // EDIT_AMAX(C,  10);
 
-    #if ENABLED(DISTINCT_E_FACTORS)
-      EDIT_ITEM_FAST(long5_25, MSG_AMAX_E, &planner.settings.max_acceleration_mm_per_s2[E_AXIS_N(active_extruder)], 100, max_accel_edit_scaled.e, []{ planner.reset_acceleration_rates(); });
-      LOOP_L_N(n, E_STEPPERS)
-        EDIT_ITEM_FAST_N(long5_25, n, MSG_AMAX_EN, &planner.settings.max_acceleration_mm_per_s2[E_AXIS_N(n)], 100, max_accel_edit_scaled.e, []{ _reset_e_acceleration_rate(MenuItemBase::itemIndex); });
-    #elif E_STEPPERS
-      EDIT_ITEM_FAST(long5_25, MSG_AMAX_E, &planner.settings.max_acceleration_mm_per_s2[E_AXIS], 100, max_accel_edit_scaled.e, []{ planner.reset_acceleration_rates(); });
-    #endif
+    // #if ENABLED(DISTINCT_E_FACTORS)
+    //   EDIT_ITEM_FAST(long5_25, MSG_AMAX_E, &planner.settings.max_acceleration_mm_per_s2[E_AXIS_N(active_extruder)], 100, max_accel_edit_scaled.e, []{ planner.reset_acceleration_rates(); });
+    //   LOOP_L_N(n, E_STEPPERS)
+    //     EDIT_ITEM_FAST_N(long5_25, n, MSG_AMAX_EN, &planner.settings.max_acceleration_mm_per_s2[E_AXIS_N(n)], 100, max_accel_edit_scaled.e, []{ _reset_e_acceleration_rate(MenuItemBase::itemIndex); });
+    // #elif E_STEPPERS
+    //   EDIT_ITEM_FAST(long5_25, MSG_AMAX_E, &planner.settings.max_acceleration_mm_per_s2[E_AXIS], 100, max_accel_edit_scaled.e, []{ planner.reset_acceleration_rates(); });
+    // #endif
 
     #ifdef XY_FREQUENCY_LIMIT
       EDIT_ITEM(int8, MSG_XY_FREQUENCY_LIMIT, &planner.xy_freq_limit_hz, 0, 100, planner.refresh_frequency_limit, true);
@@ -500,14 +500,14 @@ void menu_advanced_steps_per_mm() {
   #define EDIT_QSTEPS(Q) EDIT_ITEM_FAST(float51, MSG_##Q##_STEPS, &planner.settings.axis_steps_per_mm[_AXIS(Q)], 5, 9999, []{ planner.refresh_positioning(); })
   EDIT_QSTEPS(A);
   EDIT_QSTEPS(B);
-  EDIT_QSTEPS(C);
+  // EDIT_QSTEPS(C);
 
-  #if ENABLED(DISTINCT_E_FACTORS)
-    LOOP_L_N(n, E_STEPPERS)
-      EDIT_ITEM_FAST_N(float51, n, MSG_EN_STEPS, &planner.settings.axis_steps_per_mm[E_AXIS_N(n)], 5, 9999, []{ _planner_refresh_e_positioning(MenuItemBase::itemIndex); });
-  #elif E_STEPPERS
-    EDIT_ITEM_FAST(float51, MSG_E_STEPS, &planner.settings.axis_steps_per_mm[E_AXIS], 5, 9999, []{ planner.refresh_positioning(); });
-  #endif
+  // #if ENABLED(DISTINCT_E_FACTORS)
+  //   LOOP_L_N(n, E_STEPPERS)
+  //     EDIT_ITEM_FAST_N(float51, n, MSG_EN_STEPS, &planner.settings.axis_steps_per_mm[E_AXIS_N(n)], 5, 9999, []{ _planner_refresh_e_positioning(MenuItemBase::itemIndex); });
+  // #elif E_STEPPERS
+  //   EDIT_ITEM_FAST(float51, MSG_E_STEPS, &planner.settings.axis_steps_per_mm[E_AXIS], 5, 9999, []{ planner.refresh_positioning(); });
+  // #endif
 
   END_MENU();
 }
@@ -524,7 +524,7 @@ void menu_advanced_settings() {
 
   #if DISABLED(SLIM_LCD_MENUS)
 
-    #if HAS_M206_COMMAND
+    #if false// HAS_M206_COMMAND
       //
       // Set Home Offsets
       //
@@ -575,19 +575,19 @@ void menu_advanced_settings() {
   #endif
 
   #if SHOW_MENU_ADVANCED_TEMPERATURE
-    SUBMENU(MSG_TEMPERATURE, menu_advanced_temperature);
+    // SUBMENU(MSG_TEMPERATURE, menu_advanced_temperature);
   #endif
 
-  #if DISABLED(NO_VOLUMETRICS) || ENABLED(ADVANCED_PAUSE_FEATURE)
-    SUBMENU(MSG_FILAMENT, menu_advanced_filament);
-  #elif ENABLED(LIN_ADVANCE)
-    #if EXTRUDERS == 1
-      EDIT_ITEM(float42_52, MSG_ADVANCE_K, &planner.extruder_advance_K[0], 0, 999);
-    #elif EXTRUDERS > 1
-      LOOP_L_N(n, E_STEPPERS)
-        EDIT_ITEM_N(float42_52, n, MSG_ADVANCE_K_E, &planner.extruder_advance_K[n], 0, 999);
-    #endif
-  #endif
+  // #if DISABLED(NO_VOLUMETRICS) || ENABLED(ADVANCED_PAUSE_FEATURE)
+  //   SUBMENU(MSG_FILAMENT, menu_advanced_filament);
+  // #elif ENABLED(LIN_ADVANCE)
+  //   #if EXTRUDERS == 1
+  //     EDIT_ITEM(float42_52, MSG_ADVANCE_K, &planner.extruder_advance_K[0], 0, 999);
+  //   #elif EXTRUDERS > 1
+  //     LOOP_L_N(n, E_STEPPERS)
+  //       EDIT_ITEM_N(float42_52, n, MSG_ADVANCE_K_E, &planner.extruder_advance_K[n], 0, 999);
+  //   #endif
+  // #endif
 
   // M540 S - Abort on endstop hit when SD printing
   #if ENABLED(SD_ABORT_ON_ENDSTOP_HIT)

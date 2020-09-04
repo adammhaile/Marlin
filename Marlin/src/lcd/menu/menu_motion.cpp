@@ -234,12 +234,12 @@ void menu_move() {
         ACTION_ITEM(MSG_FREE_XY, []{ line_to_z(delta_clip_start_height); ui.synchronize(); });
     #endif
 
-    SUBMENU(MSG_MOVE_Z, []{ _menu_move_distance(Z_AXIS, lcd_move_z); });
+    // SUBMENU(MSG_MOVE_Z, []{ _menu_move_distance(Z_AXIS, lcd_move_z); });
   }
   else
     GCODES_ITEM(MSG_AUTO_HOME, G28_STR);
 
-  #if ANY(SWITCHING_EXTRUDER, SWITCHING_NOZZLE, MAGNETIC_SWITCHING_TOOLHEAD)
+  #if false //ANY(SWITCHING_EXTRUDER, SWITCHING_NOZZLE, MAGNETIC_SWITCHING_TOOLHEAD)
 
     #if EXTRUDERS >= 4
       switch (active_extruder) {
@@ -275,7 +275,7 @@ void menu_move() {
 
   #endif
 
-  #if E_MANUAL
+  #if false //E_MANUAL
 
     // The current extruder
     SUBMENU(MSG_MOVE_E, []{ _menu_move_distance(E_AXIS, []{ lcd_move_e(); }, -1); });
@@ -328,7 +328,7 @@ void menu_motion() {
   #if ENABLED(INDIVIDUAL_AXIS_HOMING_MENU)
     GCODES_ITEM(MSG_AUTO_HOME_X, PSTR("G28X"));
     GCODES_ITEM(MSG_AUTO_HOME_Y, PSTR("G28Y"));
-    GCODES_ITEM(MSG_AUTO_HOME_Z, PSTR("G28Z"));
+    // GCODES_ITEM(MSG_AUTO_HOME_Z, PSTR("G28Z"));
   #endif
 
   //
@@ -364,7 +364,7 @@ void menu_motion() {
     if (!g29_in_progress)
       SUBMENU(MSG_BED_LEVELING, menu_bed_leveling);
 
-  #elif HAS_LEVELING && DISABLED(SLIM_LCD_MENUS)
+  #elif false // HAS_LEVELING && DISABLED(SLIM_LCD_MENUS)
 
     #if DISABLED(PROBE_MANUALLY)
       GCODES_ITEM(MSG_LEVEL_BED, PSTR("G28\nG29"));
@@ -382,7 +382,7 @@ void menu_motion() {
 
   #endif
 
-  #if ENABLED(LEVEL_BED_CORNERS) && DISABLED(LCD_BED_LEVELING)
+  #if false // ENABLED(LEVEL_BED_CORNERS) && DISABLED(LCD_BED_LEVELING)
     ACTION_ITEM(MSG_LEVEL_CORNERS, _lcd_level_bed_corners);
   #endif
 

@@ -58,12 +58,12 @@
     STATIC_ITEM(MSG_INFO_PRINT_LONGEST, SS_LEFT);                                           // Longest job time:
     STATIC_ITEM_P(PSTR("> "), SS_LEFT, duration_t(stats.longestPrint).toString(buffer));    // > 99y 364d 23h 59m 59s
 
-    STATIC_ITEM(MSG_INFO_PRINT_FILAMENT, SS_LEFT);                                          // Extruded total:
-    sprintf_P(buffer, PSTR("%ld.%im")
-      , long(stats.filamentUsed / 1000)
-      , int16_t(stats.filamentUsed / 100) % 10
-    );
-    STATIC_ITEM_P(PSTR("> "), SS_LEFT, buffer);                                             // > 125m
+    // STATIC_ITEM(MSG_INFO_PRINT_FILAMENT, SS_LEFT);                                          // Extruded total:
+    // sprintf_P(buffer, PSTR("%ld.%im")
+    //   , long(stats.filamentUsed / 1000)
+    //   , int16_t(stats.filamentUsed / 100) % 10
+    // );
+    // STATIC_ITEM_P(PSTR("> "), SS_LEFT, buffer);                                             // > 125m
 
     #if SERVICE_INTERVAL_1 > 0 || SERVICE_INTERVAL_2 > 0 || SERVICE_INTERVAL_3 > 0
       strcpy_P(buffer, GET_TEXT(MSG_SERVICE_IN));
@@ -239,16 +239,16 @@ void menu_info_board() {
     STATIC_ITEM_P(PSTR(STRING_DISTRIBUTION_DATE));              // YYYY-MM-DD HH:MM
     STATIC_ITEM_P(PSTR(MACHINE_NAME));                          // My3DPrinter
     STATIC_ITEM_P(PSTR(WEBSITE_URL));                           // www.my3dprinter.com
-    PSTRING_ITEM(MSG_INFO_EXTRUDERS, STRINGIFY(EXTRUDERS), SS_CENTER); // Extruders: 2
-    #if HAS_LEVELING
-      STATIC_ITEM(
-        TERN_(AUTO_BED_LEVELING_3POINT, MSG_3POINT_LEVELING)      // 3-Point Leveling
-        TERN_(AUTO_BED_LEVELING_LINEAR, MSG_LINEAR_LEVELING)      // Linear Leveling
-        TERN_(AUTO_BED_LEVELING_BILINEAR, MSG_BILINEAR_LEVELING)  // Bi-linear Leveling
-        TERN_(AUTO_BED_LEVELING_UBL, MSG_UBL_LEVELING)            // Unified Bed Leveling
-        TERN_(MESH_BED_LEVELING, MSG_MESH_LEVELING)               // Mesh Leveling
-      );
-    #endif
+    // PSTRING_ITEM(MSG_INFO_EXTRUDERS, STRINGIFY(EXTRUDERS), SS_CENTER); // Extruders: 2
+    // #if HAS_LEVELING
+    //   STATIC_ITEM(
+    //     TERN_(AUTO_BED_LEVELING_3POINT, MSG_3POINT_LEVELING)      // 3-Point Leveling
+    //     TERN_(AUTO_BED_LEVELING_LINEAR, MSG_LINEAR_LEVELING)      // Linear Leveling
+    //     TERN_(AUTO_BED_LEVELING_BILINEAR, MSG_BILINEAR_LEVELING)  // Bi-linear Leveling
+    //     TERN_(AUTO_BED_LEVELING_UBL, MSG_UBL_LEVELING)            // Unified Bed Leveling
+    //     TERN_(MESH_BED_LEVELING, MSG_MESH_LEVELING)               // Mesh Leveling
+    //   );
+    // #endif
     END_SCREEN();
   }
 
@@ -265,9 +265,9 @@ void menu_info() {
   #else
     SUBMENU(MSG_INFO_PRINTER_MENU, menu_info_printer);           // Printer Info >
     SUBMENU(MSG_INFO_BOARD_MENU, menu_info_board);               // Board Info >
-    #if EXTRUDERS
-      SUBMENU(MSG_INFO_THERMISTOR_MENU, menu_info_thermistors);  // Thermistors >
-    #endif
+    // #if EXTRUDERS
+    //   SUBMENU(MSG_INFO_THERMISTOR_MENU, menu_info_thermistors);  // Thermistors >
+    // #endif
   #endif
 
   #if ENABLED(PRINTCOUNTER)

@@ -524,11 +524,11 @@ void MarlinUI::draw_status_screen() {
       u8g.drawBitmapP(STATUS_LOGO_X, STATUS_LOGO_Y, STATUS_LOGO_BYTEWIDTH, STATUS_LOGO_HEIGHT, status_logo_bmp);
   #endif
 
-  #if STATUS_HEATERS_WIDTH
-    // Draw all heaters (and maybe the bed) in one go
-    if (PAGE_CONTAINS(STATUS_HEATERS_Y, STATUS_HEATERS_Y + STATUS_HEATERS_HEIGHT - 1))
-      u8g.drawBitmapP(STATUS_HEATERS_X, STATUS_HEATERS_Y, STATUS_HEATERS_BYTEWIDTH, STATUS_HEATERS_HEIGHT, status_heaters_bmp);
-  #endif
+  // #if STATUS_HEATERS_WIDTH
+  //   // Draw all heaters (and maybe the bed) in one go
+  //   if (PAGE_CONTAINS(STATUS_HEATERS_Y, STATUS_HEATERS_Y + STATUS_HEATERS_HEIGHT - 1))
+  //     u8g.drawBitmapP(STATUS_HEATERS_X, STATUS_HEATERS_Y, STATUS_HEATERS_BYTEWIDTH, STATUS_HEATERS_HEIGHT, status_heaters_bmp);
+  // #endif
 
   #if DO_DRAW_CUTTER && DISABLED(STATUS_COMBINE_HEATERS)
     #if ANIM_CUTTER
@@ -542,102 +542,102 @@ void MarlinUI::draw_status_screen() {
       u8g.drawBitmapP(STATUS_CUTTER_X, cuttery, STATUS_CUTTER_BYTEWIDTH, cutterh, CUTTER_BITMAP(CUTTER_ALT()));
   #endif
 
-  #if DO_DRAW_BED && DISABLED(STATUS_COMBINE_HEATERS)
-    #if ANIM_BED
-      #define BED_BITMAP(S) ((S) ? status_bed_on_bmp : status_bed_bmp)
-    #else
-      #define BED_BITMAP(S) status_bed_bmp
-    #endif
-    const uint8_t bedy = STATUS_BED_Y(BED_ALT()),
-                  bedh = STATUS_BED_HEIGHT(BED_ALT());
-    if (PAGE_CONTAINS(bedy, bedy + bedh - 1))
-      u8g.drawBitmapP(STATUS_BED_X, bedy, STATUS_BED_BYTEWIDTH, bedh, BED_BITMAP(BED_ALT()));
-  #endif
+  // #if DO_DRAW_BED && DISABLED(STATUS_COMBINE_HEATERS)
+  //   #if ANIM_BED
+  //     #define BED_BITMAP(S) ((S) ? status_bed_on_bmp : status_bed_bmp)
+  //   #else
+  //     #define BED_BITMAP(S) status_bed_bmp
+  //   #endif
+  //   const uint8_t bedy = STATUS_BED_Y(BED_ALT()),
+  //                 bedh = STATUS_BED_HEIGHT(BED_ALT());
+  //   if (PAGE_CONTAINS(bedy, bedy + bedh - 1))
+  //     u8g.drawBitmapP(STATUS_BED_X, bedy, STATUS_BED_BYTEWIDTH, bedh, BED_BITMAP(BED_ALT()));
+  // #endif
 
-  #if DO_DRAW_CHAMBER && DISABLED(STATUS_COMBINE_HEATERS)
-    #if ANIM_CHAMBER
-      #define CHAMBER_BITMAP(S) ((S) ? status_chamber_on_bmp : status_chamber_bmp)
-    #else
-      #define CHAMBER_BITMAP(S) status_chamber_bmp
-    #endif
-    const uint8_t chambery = STATUS_CHAMBER_Y(CHAMBER_ALT()),
-                  chamberh = STATUS_CHAMBER_HEIGHT(CHAMBER_ALT());
-    if (PAGE_CONTAINS(chambery, chambery + chamberh - 1))
-      u8g.drawBitmapP(STATUS_CHAMBER_X, chambery, STATUS_CHAMBER_BYTEWIDTH, chamberh, CHAMBER_BITMAP(CHAMBER_ALT()));
-  #endif
+  // #if DO_DRAW_CHAMBER && DISABLED(STATUS_COMBINE_HEATERS)
+  //   #if ANIM_CHAMBER
+  //     #define CHAMBER_BITMAP(S) ((S) ? status_chamber_on_bmp : status_chamber_bmp)
+  //   #else
+  //     #define CHAMBER_BITMAP(S) status_chamber_bmp
+  //   #endif
+  //   const uint8_t chambery = STATUS_CHAMBER_Y(CHAMBER_ALT()),
+  //                 chamberh = STATUS_CHAMBER_HEIGHT(CHAMBER_ALT());
+  //   if (PAGE_CONTAINS(chambery, chambery + chamberh - 1))
+  //     u8g.drawBitmapP(STATUS_CHAMBER_X, chambery, STATUS_CHAMBER_BYTEWIDTH, chamberh, CHAMBER_BITMAP(CHAMBER_ALT()));
+  // #endif
 
-  #if DO_DRAW_FAN
-    #if STATUS_FAN_FRAMES > 2
-      static bool old_blink;
-      static uint8_t fan_frame;
-      if (old_blink != blink) {
-        old_blink = blink;
-        if (!thermalManager.fan_speed[0] || ++fan_frame >= STATUS_FAN_FRAMES) fan_frame = 0;
-      }
-    #endif
-    if (PAGE_CONTAINS(STATUS_FAN_Y, STATUS_FAN_Y + STATUS_FAN_HEIGHT - 1))
-      u8g.drawBitmapP(STATUS_FAN_X, STATUS_FAN_Y, STATUS_FAN_BYTEWIDTH, STATUS_FAN_HEIGHT,
-        #if STATUS_FAN_FRAMES > 2
-          fan_frame == 1 ? status_fan1_bmp :
-          fan_frame == 2 ? status_fan2_bmp :
-          #if STATUS_FAN_FRAMES > 3
-            fan_frame == 3 ? status_fan3_bmp :
-          #endif
-        #elif STATUS_FAN_FRAMES > 1
-          blink && thermalManager.fan_speed[0] ? status_fan1_bmp :
-        #endif
-        status_fan0_bmp
-      );
-  #endif
+  // #if DO_DRAW_FAN
+  //   #if STATUS_FAN_FRAMES > 2
+  //     static bool old_blink;
+  //     static uint8_t fan_frame;
+  //     if (old_blink != blink) {
+  //       old_blink = blink;
+  //       if (!thermalManager.fan_speed[0] || ++fan_frame >= STATUS_FAN_FRAMES) fan_frame = 0;
+  //     }
+  //   #endif
+  //   if (PAGE_CONTAINS(STATUS_FAN_Y, STATUS_FAN_Y + STATUS_FAN_HEIGHT - 1))
+  //     u8g.drawBitmapP(STATUS_FAN_X, STATUS_FAN_Y, STATUS_FAN_BYTEWIDTH, STATUS_FAN_HEIGHT,
+  //       #if STATUS_FAN_FRAMES > 2
+  //         fan_frame == 1 ? status_fan1_bmp :
+  //         fan_frame == 2 ? status_fan2_bmp :
+  //         #if STATUS_FAN_FRAMES > 3
+  //           fan_frame == 3 ? status_fan3_bmp :
+  //         #endif
+  //       #elif STATUS_FAN_FRAMES > 1
+  //         blink && thermalManager.fan_speed[0] ? status_fan1_bmp :
+  //       #endif
+  //       status_fan0_bmp
+  //     );
+  // #endif
 
   //
   // Temperature Graphics and Info
   //
-  if (PAGE_UNDER(6 + 1 + 12 + 1 + 6 + 1)) {
+  if (true){//(PAGE_UNDER(6 + 1 + 12 + 1 + 6 + 1)) {
     // Extruders
-    #if DO_DRAW_HOTENDS
-      LOOP_L_N(e, MAX_HOTEND_DRAW)
-        _draw_hotend_status((heater_ind_t)e, blink);
-    #endif
+    // #if DO_DRAW_HOTENDS
+    //   LOOP_L_N(e, MAX_HOTEND_DRAW)
+    //     _draw_hotend_status((heater_ind_t)e, blink);
+    // #endif
 
     // Laser / Spindle
-    #if DO_DRAW_CUTTER
-      if (cutter.isReady && PAGE_CONTAINS(STATUS_CUTTER_TEXT_Y - INFO_FONT_ASCENT, STATUS_CUTTER_TEXT_Y - 1)) {
-        #if CUTTER_UNIT_IS(PERCENT)
-          lcd_put_u8str(STATUS_CUTTER_TEXT_X, STATUS_CUTTER_TEXT_Y, cutter_power2str(cutter.unitPower));
-          lcd_put_wchar('%');
-        #elif CUTTER_UNIT_IS(RPM)
-          lcd_put_u8str(STATUS_CUTTER_TEXT_X - 2, STATUS_CUTTER_TEXT_Y, ftostr51rj(float(cutter.unitPower) / 1000));
-          lcd_put_wchar('K');
-        #else
-          lcd_put_u8str(STATUS_CUTTER_TEXT_X, STATUS_CUTTER_TEXT_Y, cutter_power2str(cutter.unitPower));
-        #endif
-      }
-    #endif
+    // #if DO_DRAW_CUTTER
+    //   if (PAGE_CONTAINS(STATUS_CUTTER_TEXT_Y - INFO_FONT_ASCENT, STATUS_CUTTER_TEXT_Y - 1)) {
+    //     // #if CUTTER_UNIT_IS(PERCENT)
+    //     //   lcd_put_u8str(STATUS_CUTTER_TEXT_X, STATUS_CUTTER_TEXT_Y, cutter_power2str(cutter.unitPower));
+    //     //   lcd_put_wchar('%');
+    //     // #elif CUTTER_UNIT_IS(RPM)
+    //     //   lcd_put_u8str(STATUS_CUTTER_TEXT_X - 2, STATUS_CUTTER_TEXT_Y, ftostr51rj(float(cutter.unitPower) / 1000));
+    //     //   lcd_put_wchar('K');
+    //     // #else
+    //     //   lcd_put_u8str(STATUS_CUTTER_TEXT_X, STATUS_CUTTER_TEXT_Y, cutter.unitPower > 0 ? _UxGT("Down") : _UxGT("Up"));
+    //     // #endif
+    //   }
+    // #endif
 
     // Heated Bed
-    TERN_(DO_DRAW_BED, _draw_bed_status(blink));
+    // TERN_(DO_DRAW_BED, _draw_bed_status(blink));
 
     // Heated Chamber
-    TERN_(DO_DRAW_CHAMBER, _draw_chamber_status());
+    // TERN_(DO_DRAW_CHAMBER, _draw_chamber_status());
 
     // Fan, if a bitmap was provided
-    #if DO_DRAW_FAN
-      if (PAGE_CONTAINS(STATUS_FAN_TEXT_Y - INFO_FONT_ASCENT, STATUS_FAN_TEXT_Y - 1)) {
-        char c = '%';
-        uint16_t spd = thermalManager.fan_speed[0];
-        if (spd) {
-          #if ENABLED(ADAPTIVE_FAN_SLOWING)
-            if (!blink && thermalManager.fan_speed_scaler[0] < 128) {
-              spd = thermalManager.scaledFanSpeed(0, spd);
-              c = '*';
-            }
-          #endif
-          lcd_put_u8str(STATUS_FAN_TEXT_X, STATUS_FAN_TEXT_Y, i16tostr3rj(thermalManager.fanPercent(spd)));
-          lcd_put_wchar(c);
-        }
-      }
-    #endif
+    // #if DO_DRAW_FAN
+    //   if (PAGE_CONTAINS(STATUS_FAN_TEXT_Y - INFO_FONT_ASCENT, STATUS_FAN_TEXT_Y - 1)) {
+    //     char c = '%';
+    //     uint16_t spd = thermalManager.fan_speed[0];
+    //     if (spd) {
+    //       #if ENABLED(ADAPTIVE_FAN_SLOWING)
+    //         if (!blink && thermalManager.fan_speed_scaler[0] < 128) {
+    //           spd = thermalManager.scaledFanSpeed(0, spd);
+    //           c = '*';
+    //         }
+    //       #endif
+    //       lcd_put_u8str(STATUS_FAN_TEXT_X, STATUS_FAN_TEXT_Y, i16tostr3rj(thermalManager.fanPercent(spd)));
+    //       lcd_put_wchar(c);
+    //     }
+    //   }
+    // #endif
   }
 
   #if ENABLED(SDSUPPORT)

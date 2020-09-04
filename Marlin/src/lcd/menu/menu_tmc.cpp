@@ -43,48 +43,48 @@ void menu_tmc_current() {
   #if AXIS_IS_TMC(Y)
     TMC_EDIT_STORED_I_RMS(Y, STR_Y);
   #endif
-  #if AXIS_IS_TMC(Z)
-    TMC_EDIT_STORED_I_RMS(Z, STR_Z);
-  #endif
-  #if AXIS_IS_TMC(X2)
-    TMC_EDIT_STORED_I_RMS(X2, STR_X2);
-  #endif
-  #if AXIS_IS_TMC(Y2)
-    TMC_EDIT_STORED_I_RMS(Y2, STR_Y2);
-  #endif
-  #if AXIS_IS_TMC(Z2)
-    TMC_EDIT_STORED_I_RMS(Z2, STR_Z2);
-  #endif
-  #if AXIS_IS_TMC(Z3)
-    TMC_EDIT_STORED_I_RMS(Z3, STR_Z3);
-  #endif
-  #if AXIS_IS_TMC(Z4)
-    TMC_EDIT_STORED_I_RMS(Z4, STR_Z4);
-  #endif
-  #if AXIS_IS_TMC(E0)
-    TMC_EDIT_STORED_I_RMS(E0, LCD_STR_E0);
-  #endif
-  #if AXIS_IS_TMC(E1)
-    TMC_EDIT_STORED_I_RMS(E1, LCD_STR_E1);
-  #endif
-  #if AXIS_IS_TMC(E2)
-    TMC_EDIT_STORED_I_RMS(E2, LCD_STR_E2);
-  #endif
-  #if AXIS_IS_TMC(E3)
-    TMC_EDIT_STORED_I_RMS(E3, LCD_STR_E3);
-  #endif
-  #if AXIS_IS_TMC(E4)
-    TMC_EDIT_STORED_I_RMS(E4, LCD_STR_E4);
-  #endif
-  #if AXIS_IS_TMC(E5)
-    TMC_EDIT_STORED_I_RMS(E5, LCD_STR_E5);
-  #endif
-  #if AXIS_IS_TMC(E6)
-    TMC_EDIT_STORED_I_RMS(E6, LCD_STR_E6);
-  #endif
-  #if AXIS_IS_TMC(E7)
-    TMC_EDIT_STORED_I_RMS(E7, LCD_STR_E7);
-  #endif
+  // #if AXIS_IS_TMC(Z)
+  //   TMC_EDIT_STORED_I_RMS(Z, STR_Z);
+  // #endif
+  // #if AXIS_IS_TMC(X2)
+  //   TMC_EDIT_STORED_I_RMS(X2, STR_X2);
+  // #endif
+  // #if AXIS_IS_TMC(Y2)
+  //   TMC_EDIT_STORED_I_RMS(Y2, STR_Y2);
+  // #endif
+  // #if AXIS_IS_TMC(Z2)
+  //   TMC_EDIT_STORED_I_RMS(Z2, STR_Z2);
+  // #endif
+  // #if AXIS_IS_TMC(Z3)
+  //   TMC_EDIT_STORED_I_RMS(Z3, STR_Z3);
+  // #endif
+  // #if AXIS_IS_TMC(Z4)
+  //   TMC_EDIT_STORED_I_RMS(Z4, STR_Z4);
+  // #endif
+  // #if AXIS_IS_TMC(E0)
+  //   TMC_EDIT_STORED_I_RMS(E0, LCD_STR_E0);
+  // #endif
+  // #if AXIS_IS_TMC(E1)
+  //   TMC_EDIT_STORED_I_RMS(E1, LCD_STR_E1);
+  // #endif
+  // #if AXIS_IS_TMC(E2)
+  //   TMC_EDIT_STORED_I_RMS(E2, LCD_STR_E2);
+  // #endif
+  // #if AXIS_IS_TMC(E3)
+  //   TMC_EDIT_STORED_I_RMS(E3, LCD_STR_E3);
+  // #endif
+  // #if AXIS_IS_TMC(E4)
+  //   TMC_EDIT_STORED_I_RMS(E4, LCD_STR_E4);
+  // #endif
+  // #if AXIS_IS_TMC(E5)
+  //   TMC_EDIT_STORED_I_RMS(E5, LCD_STR_E5);
+  // #endif
+  // #if AXIS_IS_TMC(E6)
+  //   TMC_EDIT_STORED_I_RMS(E6, LCD_STR_E6);
+  // #endif
+  // #if AXIS_IS_TMC(E7)
+  //   TMC_EDIT_STORED_I_RMS(E7, LCD_STR_E7);
+  // #endif
   END_MENU();
 }
 
@@ -101,48 +101,48 @@ void menu_tmc_current() {
     #if AXIS_HAS_STEALTHCHOP(Y)
       TMC_EDIT_STORED_HYBRID_THRS(Y, STR_Y);
     #endif
-    #if AXIS_HAS_STEALTHCHOP(Z)
-      TMC_EDIT_STORED_HYBRID_THRS(Z, STR_Z);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(X2)
-      TMC_EDIT_STORED_HYBRID_THRS(X2, STR_X2);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(Y2)
-      TMC_EDIT_STORED_HYBRID_THRS(Y2, STR_Y2);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(Z2)
-      TMC_EDIT_STORED_HYBRID_THRS(Z2, STR_Z2);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(Z3)
-      TMC_EDIT_STORED_HYBRID_THRS(Z3, STR_Z3);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(Z4)
-      TMC_EDIT_STORED_HYBRID_THRS(Z4, STR_Z4);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E0)
-      TMC_EDIT_STORED_HYBRID_THRS(E0, LCD_STR_E0);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E1)
-      TMC_EDIT_STORED_HYBRID_THRS(E1, LCD_STR_E1);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E2)
-      TMC_EDIT_STORED_HYBRID_THRS(E2, LCD_STR_E2);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E3)
-      TMC_EDIT_STORED_HYBRID_THRS(E3, LCD_STR_E3);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E4)
-      TMC_EDIT_STORED_HYBRID_THRS(E4, LCD_STR_E4);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E5)
-      TMC_EDIT_STORED_HYBRID_THRS(E5, LCD_STR_E5);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E6)
-      TMC_EDIT_STORED_HYBRID_THRS(E6, LCD_STR_E6);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E7)
-      TMC_EDIT_STORED_HYBRID_THRS(E7, LCD_STR_E7);
-    #endif
+    // #if AXIS_HAS_STEALTHCHOP(Z)
+    //   TMC_EDIT_STORED_HYBRID_THRS(Z, STR_Z);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(X2)
+    //   TMC_EDIT_STORED_HYBRID_THRS(X2, STR_X2);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(Y2)
+    //   TMC_EDIT_STORED_HYBRID_THRS(Y2, STR_Y2);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(Z2)
+    //   TMC_EDIT_STORED_HYBRID_THRS(Z2, STR_Z2);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(Z3)
+    //   TMC_EDIT_STORED_HYBRID_THRS(Z3, STR_Z3);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(Z4)
+    //   TMC_EDIT_STORED_HYBRID_THRS(Z4, STR_Z4);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E0)
+    //   TMC_EDIT_STORED_HYBRID_THRS(E0, LCD_STR_E0);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E1)
+    //   TMC_EDIT_STORED_HYBRID_THRS(E1, LCD_STR_E1);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E2)
+    //   TMC_EDIT_STORED_HYBRID_THRS(E2, LCD_STR_E2);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E3)
+    //   TMC_EDIT_STORED_HYBRID_THRS(E3, LCD_STR_E3);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E4)
+    //   TMC_EDIT_STORED_HYBRID_THRS(E4, LCD_STR_E4);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E5)
+    //   TMC_EDIT_STORED_HYBRID_THRS(E5, LCD_STR_E5);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E6)
+    //   TMC_EDIT_STORED_HYBRID_THRS(E6, LCD_STR_E6);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E7)
+    //   TMC_EDIT_STORED_HYBRID_THRS(E7, LCD_STR_E7);
+    // #endif
     END_MENU();
   }
 
@@ -198,48 +198,48 @@ void menu_tmc_current() {
     #if AXIS_HAS_STEALTHCHOP(Y)
       TMC_EDIT_STEP_MODE(Y, STR_Y);
     #endif
-    #if AXIS_HAS_STEALTHCHOP(Z)
-      TMC_EDIT_STEP_MODE(Z, STR_Z);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(X2)
-      TMC_EDIT_STEP_MODE(X2, STR_X2);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(Y2)
-      TMC_EDIT_STEP_MODE(Y2, STR_Y2);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(Z2)
-      TMC_EDIT_STEP_MODE(Z2, STR_Z2);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(Z3)
-      TMC_EDIT_STEP_MODE(Z3, STR_Z3);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(Z4)
-      TMC_EDIT_STEP_MODE(Z4, STR_Z4);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E0)
-      TMC_EDIT_STEP_MODE(E0, LCD_STR_E0);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E1)
-      TMC_EDIT_STEP_MODE(E1, LCD_STR_E1);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E2)
-      TMC_EDIT_STEP_MODE(E2, LCD_STR_E2);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E3)
-      TMC_EDIT_STEP_MODE(E3, LCD_STR_E3);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E4)
-      TMC_EDIT_STEP_MODE(E4, LCD_STR_E4);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E5)
-      TMC_EDIT_STEP_MODE(E5, LCD_STR_E5);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E6)
-      TMC_EDIT_STEP_MODE(E6, LCD_STR_E6);
-    #endif
-    #if AXIS_HAS_STEALTHCHOP(E7)
-      TMC_EDIT_STEP_MODE(E7, LCD_STR_E7);
-    #endif
+    // #if AXIS_HAS_STEALTHCHOP(Z)
+    //   TMC_EDIT_STEP_MODE(Z, STR_Z);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(X2)
+    //   TMC_EDIT_STEP_MODE(X2, STR_X2);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(Y2)
+    //   TMC_EDIT_STEP_MODE(Y2, STR_Y2);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(Z2)
+    //   TMC_EDIT_STEP_MODE(Z2, STR_Z2);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(Z3)
+    //   TMC_EDIT_STEP_MODE(Z3, STR_Z3);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(Z4)
+    //   TMC_EDIT_STEP_MODE(Z4, STR_Z4);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E0)
+    //   TMC_EDIT_STEP_MODE(E0, LCD_STR_E0);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E1)
+    //   TMC_EDIT_STEP_MODE(E1, LCD_STR_E1);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E2)
+    //   TMC_EDIT_STEP_MODE(E2, LCD_STR_E2);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E3)
+    //   TMC_EDIT_STEP_MODE(E3, LCD_STR_E3);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E4)
+    //   TMC_EDIT_STEP_MODE(E4, LCD_STR_E4);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E5)
+    //   TMC_EDIT_STEP_MODE(E5, LCD_STR_E5);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E6)
+    //   TMC_EDIT_STEP_MODE(E6, LCD_STR_E6);
+    // #endif
+    // #if AXIS_HAS_STEALTHCHOP(E7)
+    //   TMC_EDIT_STEP_MODE(E7, LCD_STR_E7);
+    // #endif
     END_MENU();
   }
 
