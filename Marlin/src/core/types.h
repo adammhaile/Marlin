@@ -41,6 +41,7 @@ enum AxisEnum : uint8_t {
   Y_AXIS   = 1, B_AXIS = 1,
   Z_AXIS   = 2, C_AXIS = 2,
   E_AXIS   = 3,
+  P_AXIS   = 4,
   X_HEAD   = 4, Y_HEAD = 5, Z_HEAD = 6,
   E0_AXIS  = 3,
   E1_AXIS, E2_AXIS, E3_AXIS, E4_AXIS, E5_AXIS, E6_AXIS, E7_AXIS,
@@ -500,5 +501,5 @@ struct XYZEval {
 #undef _RS
 #undef FI
 
-const xyze_char_t axis_codes { 'X', 'Y', 'Z', 'E' };
+const xyze_char_t axis_codes { 'X', 'Y', 'Z', 'E'};
 #define XYZ_CHAR(A) ((char)('X' + A))

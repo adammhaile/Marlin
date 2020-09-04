@@ -369,7 +369,10 @@ FORCE_INLINE void _draw_centered_temp(const int16_t temp, const uint8_t tx, cons
 FORCE_INLINE void _draw_axis_value(const AxisEnum axis, const char *value, const bool blink) {
   const AxisEnum a = TERN(LCD_SHOW_E_TOTAL, axis == E_AXIS ? X_AXIS : axis, axis);
   const uint8_t offs = (XYZ_SPACING) * a;
-  lcd_put_wchar(X_LABEL_POS + offs, XYZ_BASELINE, axis_codes[axis]);
+  wchar_t ac;
+  if(axis == Z_AXIS) ac = 'P';
+  else ac = axis_codes[axis];
+  lcd_put_wchar(X_LABEL_POS + offs, XYZ_BASELINE, ac);
   lcd_moveto(X_VALUE_POS + offs, XYZ_BASELINE);
   if (blink)
     lcd_put_u8str(value);
@@ -781,13 +784,14 @@ void MarlinUI::draw_status_screen() {
           lcd_put_u8str_P(PSTR("       "));
         }
         else {
-          _draw_axis_value(X_AXIS, xstring, blink);
-          _draw_axis_value(Y_AXIS, ystring, blink);
+          _draw_axis_value(X_AXIS, xstring, true);
+          _draw_axis_value(Y_AXIS, ystring, true);
         }
 
       #endif
 
-      _draw_axis_value(Z_AXIS, zstring, blink);
+      // _draw_axis_value(Z_AXIS, zstring, blink);
+      _draw_axis_value(Z_AXIS, cutter.enabled() ? PSTR("Down") : PSTR("Up"), true);
 
       #if NONE(XYZ_NO_FRAME, XYZ_HOLLOW_FRAME)
         u8g.setColorIndex(1); // black on white
