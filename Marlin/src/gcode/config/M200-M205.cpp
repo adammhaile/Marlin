@@ -189,3 +189,22 @@ void GcodeSuite::M205() {
     #endif
   #endif
 }
+
+/**
+ * M210: Set Pen down/up delay in milliseconds (M204 D200 U150)
+ *
+ *    D = Down Delay
+ *    U = Up Delay
+ */
+void GcodeSuite::M210() {
+  if (!parser.seen("DU")) {
+    SERIAL_ECHOPGM("Pen Down Delay: ");
+    SERIAL_PRINTLN(planner.settings.pen_down_delay, DEC);
+    SERIAL_ECHOPGM("Pen Up Delay: ");
+    SERIAL_PRINTLN(planner.settings.pen_up_delay, DEC);
+  }
+  else {
+    if (parser.seenval('D')) planner.settings.pen_down_delay = parser.value_linear_units();
+    if (parser.seenval('U')) planner.settings.pen_up_delay = parser.value_linear_units();
+  }
+}

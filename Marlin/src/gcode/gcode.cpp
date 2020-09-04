@@ -609,6 +609,8 @@ void GcodeSuite::process_parsed_command(const bool no_ok/*=false*/) {
             break;
         #endif
       #endif
+      
+      case 210: M210(); break;                                    // M210: Set pen down/up delay
 
       #if HAS_SOFTWARE_ENDSTOPS
         case 211: M211(); break;                                  // M211: Enable, Disable, and/or Report software endstops

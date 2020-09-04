@@ -265,6 +265,8 @@ typedef struct {
             travel_acceleration;                // (mm/s^2) M204 T - Travel acceleration. DEFAULT ACCELERATION for all NON printing moves.
  feedRate_t min_feedrate_mm_s,                  // (mm/s) M205 S - Minimum linear feedrate
             min_travel_feedrate_mm_s;           // (mm/s) M205 T - Minimum travel feedrate
+ uint16_t   pen_down_delay,
+            pen_up_delay;
 } planner_settings_t;
 
 #if DISABLED(SKEW_CORRECTION)

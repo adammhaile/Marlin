@@ -654,6 +654,10 @@ namespace Language_en {
   #endif
   PROGMEM Language_Str MSG_REHEAT                          = _UxGT("Reheat");
   PROGMEM Language_Str MSG_REHEATING                       = _UxGT("Reheating...");
+  
+  PROGMEM Language_Str MSG_PEN_DOWN_DELAY                  = _UxGT("Down Delay");
+  PROGMEM Language_Str MSG_PEN_UP_DELAY                    = _UxGT("Up Delay");
+  PROGMEM Language_Str MSG_PEN_DELAY                       = _UxGT("Down / Up Delay");
 }
 
 #if FAN_COUNT == 1

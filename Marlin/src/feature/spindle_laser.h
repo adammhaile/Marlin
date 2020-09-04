@@ -30,9 +30,7 @@
 
 #include "spindle_laser_types.h"
 
-#if ENABLED(LASER_POWER_INLINE)
-  #include "../module/planner.h"
-#endif
+#include "../module/planner.h"
 
 #define PCT_TO_PWM(X) ((X) * 255 / 100)
 
@@ -180,7 +178,7 @@ public:
   // Wait for spindle to spin up or spin down
   static inline void power_delay(const bool on) {
     #if DISABLED(LASER_POWER_INLINE)
-      safe_delay(on ? SPINDLE_LASER_POWERUP_DELAY : SPINDLE_LASER_POWERDOWN_DELAY);
+      safe_delay(on ? planner.settings.pen_down_delay : planner.settings.pen_up_delay);
     #endif
   }
 

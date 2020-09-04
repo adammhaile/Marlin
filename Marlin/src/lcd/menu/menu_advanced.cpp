@@ -512,6 +512,16 @@ void menu_advanced_steps_per_mm() {
   END_MENU();
 }
 
+void menu_advanced_pen_up_down_delay() {
+  START_MENU();
+  BACK_ITEM(MSG_MAIN);
+  
+  EDIT_ITEM_FAST(uint16_4, MSG_PEN_DOWN_DELAY, &planner.settings.pen_down_delay, 0, 2500);
+  EDIT_ITEM_FAST(uint16_4, MSG_PEN_UP_DELAY, &planner.settings.pen_up_delay, 0, 2500);
+
+  END_MENU();
+}
+
 void menu_advanced_settings() {
   const bool is_busy = printer_busy();
 

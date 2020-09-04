@@ -657,6 +657,8 @@ private:
     static void M208();
     TERN_(FWRETRACT_AUTORETRACT, static void M209());
   #endif
+  
+  static void M210();
 
   static void M211();
 

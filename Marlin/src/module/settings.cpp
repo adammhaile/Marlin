@@ -1478,6 +1478,8 @@ void MarlinSettings::postprocess() {
         EEPROM_READ(planner.settings.travel_acceleration);
         EEPROM_READ(planner.settings.min_feedrate_mm_s);
         EEPROM_READ(planner.settings.min_travel_feedrate_mm_s);
+        EEPROM_READ(planner.settings.pen_down_delay);
+        EEPROM_READ(planner.settings.pen_up_delay);
 
         #if HAS_CLASSIC_JERK
           EEPROM_READ(planner.max_jerk);
@@ -2447,6 +2449,8 @@ void MarlinSettings::reset() {
   planner.settings.travel_acceleration = DEFAULT_TRAVEL_ACCELERATION;
   planner.settings.min_feedrate_mm_s = feedRate_t(DEFAULT_MINIMUMFEEDRATE);
   planner.settings.min_travel_feedrate_mm_s = feedRate_t(DEFAULT_MINTRAVELFEEDRATE);
+  planner.settings.pen_down_delay = 100;
+  planner.settings.pen_up_delay = 100;
 
   #if HAS_CLASSIC_JERK
     #ifndef DEFAULT_XJERK
